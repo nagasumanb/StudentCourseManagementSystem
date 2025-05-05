@@ -1,0 +1,53 @@
+﻿@model StudentCourseManagement.Entity.Models.Entity.StudentCourses
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>StudentCourses</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div class="form-group">
+                <label asp-for="StudentId"></label>
+                <select asp-for="StudentId" class="form-control" asp-items="@(new SelectList(ViewBag.Students, "StudentId", "StudentName"))">
+
+                    <option value="">-- Select Student --</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CourseId"></label>
+                <select asp-for="CourseId" class="form-control" asp-items="@(new SelectList(ViewBag.Courses, "CourseId", "CourseName"))">
+                    <option value="">-- Select Course --</option>
+                </select>
+            </div>
+
+            @* <div class="form-group"> *@
+            @*     <label asp-for="InstructorId"></label> *@
+            @*     <select asp-for="InstructorId" class="form-control" asp-items="@(new SelectList(ViewBag.Instructors, "InstructorId", "InstructorName"))"> *@
+            @*         <option value="">-- Select Instructor --</option> *@
+            @*     </select> *@
+            @* </div> *@
+
+            <div class="form-group">
+                <label asp-for="HasCompleted"></label>
+                <input asp-for="HasCompleted" type="checkbox" class="form-check-input" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
